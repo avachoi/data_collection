@@ -16,10 +16,10 @@ for (let i = 0; i < arr.length; i++) {
 console.log(nested);
 
 //Part 3: Transforming Data
-create an array;
-iterate nested, create an obj,
-iterate each inner, create key-value pair with each el of inner
-push the arr to array
+// create an array;
+// iterate nested, create an obj,
+// iterate each inner, create key-value pair with each el of inner
+// push the arr to array
 
 let result = [];
 let heads = [...nested[0]].map((el) => el.toLowerCase());
@@ -50,3 +50,22 @@ let averageAge =
 	result.reduce((prev, current) => prev + Number(current.age), 0) /
 	result.length;
 console.log(averageAge);
+
+//Part 5: Full Circle
+//use Object.keys() to extract heads and concatenate to  the str
+//iterate result and iterate obj and extract values
+
+let csv = "";
+let keys = Object.keys(result[0]);
+let firstRow = keys.map((key) => key[0].toUpperCase() + key.slice(1)).join(",");
+csv += firstRow + "\\n" + "";
+
+for (let i = 0; i < result.length; i++) {
+	let row = result[i];
+	for (key in row) {
+		csv += row[key];
+	}
+	csv += "\\n";
+}
+csv = csv.slice(0, -2);
+console.log("csv", csv);
